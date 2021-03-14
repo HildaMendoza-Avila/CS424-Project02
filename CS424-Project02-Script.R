@@ -104,7 +104,8 @@ server <- function(input, output) {
 
   # replace all Na entries with 0
   energyData[is.na(energyData)] = 0.00000000
-  energyData < - subset(energyData, energyData$Latitude != 0 && energyData$Longitude != 0)
+  # energyData < - subset(energyData, Latitude != 0)
+  # energyData < - subset(energyData, Longitude != 0)
 
   # replace all negatives with 0
   negativeSubset <- subset(energyData, select=9:length(energyData))
@@ -265,7 +266,7 @@ server <- function(input, output) {
           addMarkers(lng = dataset$Longitude, lat=dataset$Latitude, popup=dataset$PlantName,
                      icon = sourceGraphIcon(2)) %>%
           addMarkers(lng = dataset$Longitude, lat=dataset$Latitude, popup=dataset$PlantName,
-                     icon = sourceGraphIcon(1))
+                     icon = sourceGraphIcon(1)) 
   })
   
   
