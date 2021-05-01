@@ -138,6 +138,8 @@ server <- function(input, output) {
 
   # END OF DATA CLEANING --------------------------------------
   
+  dataset <- energyData
+  
   sourceURLs <- list(COAL = "COAL.png", OIL = "OIL.png", GAS = "GAS.png", NUCLEAR = "NUCLEAR.png",
                      HYDRO = "HYDRO.png", BIOMASS = "BIOMASS.png", WIND = "WIND.png",
                      SOLAR = "SOLAR.png", GEOTHERMAL = "GEOTHERMAL.png", OTHER = "OTHER.png")
@@ -146,11 +148,11 @@ server <- function(input, output) {
   universalAnchorY = 3;
 
   getIconWidth <- function(sourceIndex){
-    sourceWidth <- switch(sourceIndex, illinoisData$COAL_PERCENTAGE, illinoisData$OIL_PERCENTAGE,
-                          illinoisData$GAS_PERCENTAGE, illinoisData$NUCLEAR_PERCENTAGE,
-                          illinoisData$HYDRO_PERCENTAGE, illinoisData$BIOMASS_PERCENTAGE,
-                          illinoisData$WIND_PERCENTAGE, illinoisData$SOLAR_PERCENTAGE,
-                          illinoisData$GEOTHERMAL_PERCENTAGE, illinoisData$OTHER_PERCENTAGE)
+    sourceWidth <- switch(sourceIndex, dataset$COAL_PERCENTAGE, dataset$OIL_PERCENTAGE,
+                          dataset$GAS_PERCENTAGE, dataset$NUCLEAR_PERCENTAGE,
+                          dataset$HYDRO_PERCENTAGE, dataset$BIOMASS_PERCENTAGE,
+                          dataset$WIND_PERCENTAGE, dataset$SOLAR_PERCENTAGE,
+                          dataset$GEOTHERMAL_PERCENTAGE, dataset$OTHER_PERCENTAGE)
     sourceWidth <- sourceWidth/7
     sourceWidth <- ifelse(sourceWidth < 0.00000001, 0.00000001, sourceWidth)
     sourceWidth
